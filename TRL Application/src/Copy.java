@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Copy {
 
@@ -7,7 +8,8 @@ public class Copy {
 	private String checkoutStatus;
 	private String dueDate;
 	private int patronID;
-	
+		
+
 	public int getCopyID() {
 		return copyID;
 	}
@@ -52,38 +54,15 @@ public class Copy {
 		
 	}
 
-/*	public Copy(String ID) 
+	public Copy(int copyID,int textBookID,String checkoutStatus,String dueDate,int patronID ) 
 	{
-		this.copyID = ID;
-		checkoutStatus = 1;
-		dueDate = "";
+		this.copyID = copyID;
+		this.textBookID = textBookID;
+		this.checkoutStatus = checkoutStatus;
+		this.dueDate = dueDate;
+		this.patronID = patronID;
 	}
-*/
-	public void createCopies(int textBookID) {
-		
-		
-		Copy copyOne = new Copy();		
-		copyOne.setCopyID(1234);
-		copyOne.setCheckoutStatus("Available");
-		copyOne.setTextBookID(textBookID);
-		System.out.println(copyOne.toString());
-		
-		Copy copyTwo = new Copy();		
-		copyTwo.setCopyID(4567);
-		copyTwo.setCheckoutStatus("Checked Out");
-		copyTwo.setPatronID(123);
-		copyTwo.setDueDate("3/28/2018");
-		copyTwo.setTextBookID(textBookID);
-		System.out.println(copyTwo.toString());
-		
-		
-		Copy copyThree = new Copy();		
-		copyThree.setCopyID(7890);
-		copyThree.setCheckoutStatus("Available");
-		copyThree.setTextBookID(textBookID);
-		System.out.println(copyThree.toString());
-	}
-	
+
 	public String toString(){
 		
 		

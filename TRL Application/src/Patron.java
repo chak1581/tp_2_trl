@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Patron {
 	
@@ -5,6 +6,26 @@ public class Patron {
 	private String patronName;
 	private String patronType;
 	
+	ArrayList<Patron>patronList = new ArrayList<Patron>();
+	ArrayList<Hold>HoldList = new ArrayList<Hold>();
+
+	
+	public ArrayList<Hold> getHoldList() {
+		return HoldList;
+	}
+
+	public void setHoldList(ArrayList<Hold> holdList) {
+		HoldList = holdList;
+	}
+
+	public ArrayList<Patron> getPatronList() {
+		return patronList;
+	}
+
+	public void setPatronList(ArrayList<Patron> patronList) {
+		this.patronList = patronList;
+	}
+
 	public int getPatronID() {
 		return patronID;
 	}
@@ -46,11 +67,17 @@ public class Patron {
 		Patron patronOne = new Patron(123,"abc","student");
 		Patron patronTwo = new Patron(456,"def","student");
 		
-		Hold hold1 = new Hold();
-		Hold hold2 = new Hold();
+		patronList.add(patronOne);
+		patronList.add(patronTwo);
 		
-		hold1.createHoldData(patronOne.getPatronID());
-		hold2.createHoldData(patronTwo.getPatronID());
+		Hold hold1 = new Hold(123,"N");
+		Hold hold2 = new Hold(456,"Y");
+		
+		System.out.println(hold1.toString());
+		System.out.println(hold2.toString());
+		
+		HoldList.add(hold1);
+		HoldList.add(hold2);
 		
 		System.out.println(patronOne.toString());
 		System.out.println(patronTwo.toString());
