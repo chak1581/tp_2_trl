@@ -29,19 +29,15 @@ public class Hold {
 	{
 
 	}
-
-
-	public void createHoldData(int patronID) {
-		
-		Hold hold = new Hold();
-		
-		hold.setHoldStatus("N");
-		hold.setPatronID(patronID);
-		System.out.println(hold.toString());
-		
-		
-	}
 	
+
+
+	public Hold(int patronID, String holdStatus) {
+		
+		this.patronID=patronID;
+		this.holdStatus=holdStatus;
+	}
+
 public String toString(){
 		
 		
