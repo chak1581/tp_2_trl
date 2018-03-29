@@ -47,34 +47,3 @@ public String toString(){
 	}
 
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public Hold()
-	{
-
-	}
-
-}
-
