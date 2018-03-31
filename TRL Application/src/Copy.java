@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Copy {
-
 	private int textBookID;
 	private int copyID;
 	private String checkoutStatus;

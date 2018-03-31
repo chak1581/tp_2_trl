@@ -6,7 +6,7 @@ import java.util.Date;
 public class Textbook {
 	private int textbookID;
 	private String title;
-	// private String author;
+	private String author;
 	private int numOfCopy;
 	private ArrayList<Copy> copyList = new ArrayList<Copy>();
 

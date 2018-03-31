@@ -3,7 +3,6 @@ public class Worker {
 
 	private int workerID;
 	private String workerName;
-
 	public Worker(int workerID, String workername) {
 		this.workerID = workerID;
 		this.workerName = workername;

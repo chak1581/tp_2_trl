@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Hold {
-
 	private String holdStatus;
 	private int patronID;
 	ArrayList<Hold> HoldList = new ArrayList<Hold>();

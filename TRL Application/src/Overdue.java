@@ -1,6 +1,5 @@
 
 public class Overdue {
-
 	private String patronName;
 	private int patronId;
 	private String dueNotice;

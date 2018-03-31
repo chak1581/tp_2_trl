@@ -7,7 +7,6 @@ public class TRLApp {
 	static Textbook textbook = new Textbook(100, "Software Development", 3);
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
-
 	public static void main(String[] args) {
 		// loadData();
 		Scanner input = new Scanner(System.in);
