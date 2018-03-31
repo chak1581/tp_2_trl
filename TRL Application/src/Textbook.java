@@ -32,10 +32,6 @@ public class Textbook {
 
 	public void createTextbooks(int textbookID) {
 		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
-		/*Calendar now = Calendar.getInstance();
-		now.setTime(new Date());
-		now.add(Calendar.DATE, 90);
-		String dueDate = sdf.format(now.getTime());*/
 		String dateString = "03/26/2018";
 		Date date = null;
 		try {
@@ -44,7 +40,7 @@ public class Textbook {
 
 			e.printStackTrace();
 		}
-		// System.out.println(date);
+		System.out.println(date);
 
 		System.out.println(toString());
 		Copy copyOne = new Copy(1234, textbookID, "Available", null, 0);

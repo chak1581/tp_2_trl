@@ -56,13 +56,16 @@ public class TRLApp {
 			boolean copyExists = validateCopy(copyID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
-				c.add(Calendar.DATE, 90);
-				String dueDate = dF.format(c.getTime());
-				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getCurrentPatron().getPatronID());
-				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
+				}else {
+					c.setTime(new Date());
+					c.add(Calendar.DATE, 90);
+					String dueDate = dF.format(c.getTime());
+					Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getCurrentPatron().getPatronID());
+					checkoutList.add(aCopy);
 				}
+			
 				System.out.println("More Copies to check Out[Y or N]: ");
 				Scanner userInput = new Scanner(System.in);
 				inputMoreCopies = userInput.next();
@@ -74,7 +77,7 @@ public class TRLApp {
 
 		}
 		if(inputMoreCopies.equalsIgnoreCase("N")) {
-			System.out.println("Session end");
+			System.out.println("==========Session end==========");
 		}
 	}
 
