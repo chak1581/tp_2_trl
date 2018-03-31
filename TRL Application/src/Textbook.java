@@ -32,14 +32,14 @@ public class Textbook {
 
 	public void createTextbooks(int textbookID) {
 		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
-		Calendar now = Calendar.getInstance();
+		/*Calendar now = Calendar.getInstance();
 		now.setTime(new Date());
 		now.add(Calendar.DATE, 90);
-		String dueDate = sdf.format(now.getTime());
-		// String dateString = "03/26/2018";
+		String dueDate = sdf.format(now.getTime());*/
+		String dateString = "03/26/2018";
 		Date date = null;
 		try {
-			date = sdf.parse(dueDate);
+			date = sdf.parse(dateString);
 		} catch (ParseException e) {
 
 			e.printStackTrace();
@@ -48,7 +48,7 @@ public class Textbook {
 
 		System.out.println(toString());
 		Copy copyOne = new Copy(1234, textbookID, "Available", null, 0);
-		Copy copyTwo = new Copy(4567, textbookID, "Not Available", dueDate, 123);
+		Copy copyTwo = new Copy(4567, textbookID, "Not Available", dateString, 123);
 		Copy copyThree = new Copy(8910, textbookID, "Available", null, 0);
 
 		copyList.add(copyOne);
