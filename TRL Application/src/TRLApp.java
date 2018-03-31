@@ -21,7 +21,11 @@ public class TRLApp {
 	 Scanner input = new Scanner(System.in); 
 	 String choice = input.next();
 	 if(choice.equalsIgnoreCase("Y")) {
+<<<<<<< HEAD
 	 startCheckOut(); 
+=======
+	 startCheckOut(); 
+>>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 	 }else {
 		 System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
