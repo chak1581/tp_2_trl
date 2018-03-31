@@ -59,7 +59,7 @@ public class TRLApp {
 				now.setTime(new Date()); // Now use today date.
 				now.add(Calendar.DATE, 90); // Adding 90 days
 				String dueDate = sdf.format(now.getTime());
-				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getPatronID());
+				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getCurrentPatron().getPatronID());
 				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
