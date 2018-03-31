@@ -1,5 +1,6 @@
 
 public class Manager {
+
 	private String managerName;
 	private int employeeId;
 

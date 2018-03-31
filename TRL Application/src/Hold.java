@@ -47,19 +47,20 @@ public class Hold {
 	}
 
 	public void createHoldData() {
-		
+
 		Hold hold1 = new Hold(123, "N");
 		Hold hold2 = new Hold(456, "Y");
-		
+
 		System.out.println(hold1.toString());
 		System.out.println(hold2.toString());
 
 		HoldList.add(hold1);
 		HoldList.add(hold2);
 	}
-	
+
 	public boolean hasHold(Hold PatronID) {
-		if(this.patronID==PatronID.patronID);
+		if (this.patronID == PatronID.patronID)
+			;
 		return true;
 	}
 
