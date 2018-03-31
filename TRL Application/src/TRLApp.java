@@ -1,12 +1,9 @@
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
 public class TRLApp {
-	static SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
-	static Calendar now = Calendar.getInstance();
+	static Date date = new Date();
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
 	static Worker worker = new Worker();
@@ -14,26 +11,26 @@ public class TRLApp {
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
 	static ArrayList<Copy> checkoutList = new ArrayList<Copy>();
-
+	
 	public static void main(String[] args) {
-		loadData();
-		System.out.println("T*******************************************************************T\n"
+	loadData();	
+	System.out.println("T*******************************************************************T\n"
 				+ "\nR****************Welcome to TextBook Rental System******************R\n"
 				+ "\nL*******************************************************************L");
-		System.out.print("Start a checkout session ?[Y or N]: ");
-		Scanner input = new Scanner(System.in);
-		String choice = input.next();
-		if (choice.equalsIgnoreCase("Y")) {
-			startCheckOut();
-		} else {
-			System.out.println("\nT*******************************************************************T\n"
+	 System.out.print("Start a checkout session ?[Y or N]: "); 
+	 Scanner input = new Scanner(System.in); 
+	 String choice = input.next();
+	 if(choice.equalsIgnoreCase("Y")) {
+	 startCheckOut(); 
+	 }else {
+		 System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
-		}
-		updateStatus();
-		checkoutSummary();
-	}
-
+	 	} 
+	 updateStatus();
+	 checkoutSummary();
+	 }
+	 
 	private static void startCheckOut() {
 
 		System.out.println("Please Enter the Patron ID: ");
@@ -42,7 +39,7 @@ public class TRLApp {
 		boolean patronExists = validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
 			enterCopiesToCheckOut();
-		} else {
+		}else {
 			enterCopiesToCheckOut();
 		}
 	}
@@ -56,10 +53,7 @@ public class TRLApp {
 			boolean copyExists = validateCopy(copyID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
-				now.setTime(new Date()); // Now use today date.
-				now.add(Calendar.DATE, 90); // Adding 90 days
-				String dueDate = sdf.format(now.getTime());
-				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getPatronID());
+				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", "", patron.getPatronID());
 				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
@@ -74,7 +68,7 @@ public class TRLApp {
 			}
 
 		}
-		if (inputMoreCopies.equalsIgnoreCase("N")) {
+		if(inputMoreCopies.equalsIgnoreCase("N")) {
 			System.out.println("Session end");
 		}
 	}
@@ -122,21 +116,22 @@ public class TRLApp {
 
 	private static void loadData() {
 		System.out.println("==========================TRL Data Record============================");
-
+		
 		patron.createPatronData();
-
+		
 		textbook.createTextbooks(100);
-
+		
 	}
-
+	
 	private static void checkoutSummary() {
-		for (int i = 0; i < checkoutList.size(); i++) {
+		for(int i=0; i<checkoutList.size(); i++)
+		{
 			System.out.println(checkoutList.get(i).toString());
 		}
 	}
-
+	
 	private static void updateStatus() {
-		for (int i = 0; i < checkoutList.size(); i++) {
+		for (int i=0; i<checkoutList.size();i++) {
 			checkoutList.get(i).setCheckoutStatus("checked out");
 		}
 	}
