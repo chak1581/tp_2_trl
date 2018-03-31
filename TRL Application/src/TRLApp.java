@@ -1,9 +1,12 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
 public class TRLApp {
-	static Date date = new Date();
+	static SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yy");
+	static Calendar now = Calendar.getInstance();
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
 	static Worker worker = new Worker();
@@ -22,13 +25,13 @@ public class TRLApp {
 	 String choice = input.next();
 	 if(choice.equalsIgnoreCase("Y")) {
 	 startCheckOut(); 
-	 checkoutSummary();
 	 }else {
 		 System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
 	 	} 
-	checkoutSummary();
+	 updateStatus();
+	 checkoutSummary();
 	 }
 	 
 	private static void startCheckOut() {
@@ -38,7 +41,6 @@ public class TRLApp {
 		int patronID = input.nextInt();
 		boolean patronExists = validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
-			System.out.println("Please Enter CopyID: ");
 			enterCopiesToCheckOut();
 		}else {
 			enterCopiesToCheckOut();
@@ -54,7 +56,11 @@ public class TRLApp {
 			boolean copyExists = validateCopy(copyID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
-				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", date, patron.getPatronID());
+				now.setTime(new Date());
+				now.add(Calendar.DATE,90);
+				String dueDate = sdf.format(now.getTime());
+				//System.out.println(now.get(Calendar.MONTH)+now.get(Calendar.DATE)+now.get(Calendar.YEAR));
+				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "CheckedOut", dueDate, patron.getPatronID());
 				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
@@ -68,6 +74,9 @@ public class TRLApp {
 				System.out.println("Incorrect Copy ID. Please Re-Enter Copy ID: ");
 			}
 
+		}
+		if(inputMoreCopies.equalsIgnoreCase("N")) {
+			System.out.println("Session end");
 		}
 	}
 
@@ -122,10 +131,15 @@ public class TRLApp {
 	}
 	
 	private static void checkoutSummary() {
-		
 		for(int i=0; i<checkoutList.size(); i++)
 		{
-			checkoutList.get(i).toString();
+			System.out.println(checkoutList.get(i).toString());
+		}
+	}
+	
+	private static void updateStatus() {
+		for (int i=0; i<checkoutList.size();i++) {
+			checkoutList.get(i).setCheckoutStatus("checked out");
 		}
 	}
 

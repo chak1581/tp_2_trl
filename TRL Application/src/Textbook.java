@@ -1,6 +1,7 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Textbook {
@@ -31,10 +32,14 @@ public class Textbook {
 
 	public void createTextbooks(int textbookID) {
 		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
-		String dateString = "03/26/2018";
+		Calendar now = Calendar.getInstance();
+		now.setTime(new Date());
+		now.add(Calendar.DATE,90);
+		String dueDate = sdf.format(now.getTime());
+		//String dateString = "03/26/2018";
 		Date date = null;
 		try {
-			date = sdf.parse(dateString);
+			date = sdf.parse(dueDate);
 		} catch (ParseException e) {
 
 			e.printStackTrace();
@@ -43,7 +48,7 @@ public class Textbook {
 
 		System.out.println(toString());
 		Copy copyOne = new Copy(1234,  textbookID,  "Available",  null,  0);
-		Copy copyTwo = new Copy(4567,  textbookID,  "Not Available",  date,  123);
+		Copy copyTwo = new Copy(4567,  textbookID,  "Not Available",  dueDate,  123);
 		Copy copyThree = new Copy(8910,  textbookID,  "Available",  null,  0);
 
 		copyList.add(copyOne);
