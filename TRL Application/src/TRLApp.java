@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class TRLApp {
-	static SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
-	static Calendar now = Calendar.getInstance();
+	static SimpleDateFormat dF = new SimpleDateFormat("MM/dd/yyyy");
+	static Calendar c = Calendar.getInstance(); 
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
 	static Worker worker = new Worker();
@@ -56,9 +56,8 @@ public class TRLApp {
 			boolean copyExists = validateCopy(copyID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
-				now.setTime(new Date()); // Now use today date.
-				now.add(Calendar.DATE, 90); // Adding 90 days
-				String dueDate = sdf.format(now.getTime());
+				c.add(Calendar.DATE, 90);
+				String dueDate = dF.format(c.getTime());
 				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getCurrentPatron().getPatronID());
 				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
