@@ -27,7 +27,8 @@ public class TRLApp {
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
 	 	} 
-	checkoutSummary();
+	 updateStatus();
+	 checkoutSummary();
 	 }
 	 
 	private static void startCheckOut() {
@@ -37,7 +38,6 @@ public class TRLApp {
 		int patronID = input.nextInt();
 		boolean patronExists = validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
-			System.out.println("Please Enter CopyID: ");
 			enterCopiesToCheckOut();
 		}else {
 			enterCopiesToCheckOut();
@@ -67,6 +67,9 @@ public class TRLApp {
 				System.out.println("Incorrect Copy ID. Please Re-Enter Copy ID: ");
 			}
 
+		}
+		if(inputMoreCopies.equalsIgnoreCase("N")) {
+			System.out.println("Session end");
 		}
 	}
 
@@ -123,7 +126,13 @@ public class TRLApp {
 	private static void checkoutSummary() {
 		for(int i=0; i<checkoutList.size(); i++)
 		{
-			checkoutList.get(i).toString();
+			System.out.println(checkoutList.get(i).toString());
+		}
+	}
+	
+	private static void updateStatus() {
+		for (int i=0; i<checkoutList.size();i++) {
+			checkoutList.get(i).setCheckoutStatus("checked out");
 		}
 	}
 
