@@ -1,8 +1,8 @@
 
 public class Overdue {
-	String patronName;
-	int patronId;
-	String dueNotice;
+	private String patronName;
+	private int patronId;
+	private String dueNotice;
 	// Date date;
 
 	public void Overdue(String PatronName, int PatronId, String DueNotice) {

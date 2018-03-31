@@ -1,7 +1,7 @@
 
 public class Manager {
-	String managerName;
-	int employeeId;
+	private String managerName;
+	private int employeeId;
 
 	public Manager(String ManagerName, int EmployeeId) {
 		this.managerName = ManagerName;
