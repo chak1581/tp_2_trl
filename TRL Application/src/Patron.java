@@ -97,4 +97,10 @@ public class Patron {
 
 	}
 
+	public Patron getCurrentPatron() 
+	{
+		Patron current_patron = patronList.get(getPatronID());
+		return current_patron;
+	}
+
 }
