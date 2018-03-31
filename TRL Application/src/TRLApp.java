@@ -13,99 +13,7 @@ public class TRLApp {
 	static ArrayList<Copy> checkoutList = new ArrayList<Copy>();
 	
 	public static void main(String[] args) {
-		loadData();
-		/*Scanner input = new Scanner(System.in);
-		System.out.println("T*******************************************************************T\n"
-				+ "\nR****************Welcome to TextBook Rental System******************R\n"
-				+ "\nL*******************************************************************L");
-		int option;
-		a: while (true) {
-			System.out.println("\n=====TRL Main Menu=====");
-			System.out.println("1. Start CheckOut.");
-			System.out.println("2. Exit Session. ");
-			System.out.print("Please enter option: ");
-			option = input.nextInt();
-			if (option == 1) {
-				System.out.println("\n===========Start CheckOut============");
-				System.out.print("Please enter Worker ID: ");
-				int workerIDstart = input.nextInt();
-				System.out.println("WorkID: " + workerIDstart + " is running the transations.");
-				System.out.print("Please enter Patron ID: ");
-				int patronID = input.nextInt();
-				System.out.print("[worker:" + workerIDstart + "]Did you want to check current Hold record?[Y or N]: ");
-				String choice = input.next();
-				if (choice.equalsIgnoreCase("Y")) {
-					hold.createHoldData();
-					if (patronID != hold.getPatronID()) {
-						System.out.println("[PatronID:" + patronID + "] has no holds.");
-						b: while (true) {
-							System.out.print("\nStart CheckOut[Y or N]: ");
-							String selection = input.next();
-							if (selection.equalsIgnoreCase("Y")) {
-								System.out.print("Please enter the Copy ID: ");
-								int copyID = input.nextInt();
-								System.out.println("[" + copyID + "] CheckOut successfully.");
-							} else {
-								d: while (true) {
-									System.out.println("Please enter WorkerID to complete the session: ");
-									int workerIDend = input.nextInt();
-									if (workerIDstart == workerIDend) {
-										System.out.println("Session completed.");
-										break b;
-									} else if (workerIDstart != workerIDend) {
-										System.out.println("WorkID is not correct. Please re-enter the WorkerID: ");
-										int workerIDend2 = input.nextInt();
-										if (workerIDstart == workerIDend2) {
-											System.out.println("Session completed.");
-											break d;
-										}
-									}
-									break b;
-								}
-							}
-						}
-					} else {
-						System.out.println(
-								"[PatronID:" + patronID + "] has hold. Please pay the fine before proceeding.");
-					}
-				} else if (choice.equalsIgnoreCase("N")) {
-					c: while (true) {
-						System.out.print("\nStart CheckOut[Y or N]: ");
-						String selection = input.next();
-						if (selection.equalsIgnoreCase("Y")) {
-							System.out.print("Please enter the Copy ID: ");
-							int copyID = input.nextInt();
-							System.out.println("[" + copyID + "] CheckOut successfully.");
-						} else {
-							d: while (true) {
-								System.out.println("Please enter WorkerID to complete the session: ");
-								int workerIDend = input.nextInt();
-								if (workerIDstart == workerIDend) {
-									System.out.println("Session completed.");
-									break c;
-								} else if (workerIDstart != workerIDend) {
-									System.out.println("WorkID is not correct!!!" + "Please re-enter the WorkerID: ");
-									int workerIDend2 = input.nextInt();
-									if (workerIDstart == workerIDend2) {
-										System.out.println("Session completed.");
-										break d;
-									}
-								}
-							}
-							break c;
-						}
-					}
-				}
-				
-				}if (option == 2) {
-				System.out.println("\nT*******************************************************************T\n"
-						+ "\nR************Thank you for using Textbook Rental System*************R\n"
-						+ "\nL*******************************************************************L");
-				break a;
-			}
-		}
-	}*/
-		
+	loadData();	
 	System.out.println("T*******************************************************************T\n"
 				+ "\nR****************Welcome to TextBook Rental System******************R\n"
 				+ "\nL*******************************************************************L");
@@ -114,7 +22,7 @@ public class TRLApp {
 	 String choice = input.next();
 	 if(choice.equalsIgnoreCase("Y")) {
 	 startCheckOut(); 
-	 //checkoutSummary();
+	 checkoutSummary();
 	 }else {
 		 System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
@@ -123,7 +31,6 @@ public class TRLApp {
 	checkoutSummary();
 	 }
 	 
-
 	private static void startCheckOut() {
 
 		System.out.println("Please Enter the Patron ID: ");
@@ -133,26 +40,26 @@ public class TRLApp {
 		if (patronExists == true && holdStatus == "N") {
 			System.out.println("Please Enter CopyID: ");
 			enterCopiesToCheckOut();
+		}else {
+			enterCopiesToCheckOut();
 		}
 	}
 
 	private static void enterCopiesToCheckOut() {
-
 		String inputMoreCopies = "Y";
 		while (inputMoreCopies.equalsIgnoreCase("Y")) {
-			System.out.println("Enter CopyID: ");
+			System.out.println("Please Enter CopyID: ");
 			Scanner input = new Scanner(System.in);
 			int copyID = input.nextInt();
 			boolean copyExists = validateCopy(copyID);
-
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
 				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", date, patron.getPatronID());
 				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
-					System.out.println("The Copy is Already Checked Out");
+					System.out.println("The Copy is Already Checked Out!!!");
 				}
-				System.out.println("More Copies to check Out?");
+				System.out.println("More Copies to check Out[Y or N]: ");
 				Scanner userInput = new Scanner(System.in);
 				inputMoreCopies = userInput.next();
 			}

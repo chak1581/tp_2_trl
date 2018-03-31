@@ -4,7 +4,7 @@ public class Patron {
 	private int patronID;
 	private String patronName;
 	private String patronType;
-	
+
 	ArrayList<Patron> patronList = new ArrayList<Patron>();
 	ArrayList<Hold> HoldList = new ArrayList<Hold>();
 
@@ -74,17 +74,17 @@ public class Patron {
 		Hold hold2 = new Hold(456, "Y");
 		Hold hold3 = new Hold(789, "Y");
 		Hold hold4 = new Hold(1001, "Y");
-		
+
 		System.out.println(hold1.toString());
 		System.out.println(hold2.toString());
 		System.out.println(hold3.toString());
 		System.out.println(hold4.toString());
-		
+
 		HoldList.add(hold1);
 		HoldList.add(hold2);
 		HoldList.add(hold3);
 		HoldList.add(hold4);
-		
+
 		System.out.println(patronOne.toString());
 		System.out.println(patronTwo.toString());
 		System.out.println(patronThree.toString());
