@@ -66,5 +66,10 @@ public class Copy {
 				+ " Due Date: " + dueDate + " Patron ID: " + patronID;
 
 	}
+<<<<<<< HEAD
 
 }
+=======
+	
+}
+>>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
