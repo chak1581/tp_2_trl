@@ -5,7 +5,7 @@ public class Copy {
 	private int textBookID;
 	private int copyID;
 	private String checkoutStatus;
-	private Date dueDate;
+	private String dueDate;
 	private int patronID;
 
 	public int getCopyID() {
@@ -24,11 +24,11 @@ public class Copy {
 		this.checkoutStatus = checkoutStatus;
 	}
 
-	public Date getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -52,7 +52,7 @@ public class Copy {
 
 	}
 
-	public Copy(int copyID, int textBookID, String checkoutStatus, Date dueDate, int patronID) {
+	public Copy(int copyID, int textBookID, String checkoutStatus, String dueDate, int patronID) {
 		this.copyID = copyID;
 		this.textBookID = textBookID;
 		this.checkoutStatus = checkoutStatus;
@@ -62,10 +62,9 @@ public class Copy {
 
 	public String toString() {
 
-		
-		return "Textbook ID: " + textBookID + " CopyID: " + copyID + " CheckOut Status: " + checkoutStatus+ " Due Date: " + dueDate + " Patron ID: " + patronID;
+		return "Textbook ID: " + textBookID + " CopyID: " + copyID + " CheckOut Status: " + checkoutStatus
+				+ " Due Date: " + dueDate + " Patron ID: " + patronID;
 
-		
 	}
 
 }

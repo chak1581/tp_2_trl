@@ -1,9 +1,12 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
 public class TRLApp {
-	static Date date = new Date();
+	static SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+	static Calendar now = Calendar.getInstance();
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
 	static Worker worker = new Worker();
@@ -53,7 +56,10 @@ public class TRLApp {
 			boolean copyExists = validateCopy(copyID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
-				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", date, patron.getCurrentPatron().getPatronID());
+				now.setTime(new Date()); // Now use today date.
+				now.add(Calendar.DATE, 90); // Adding 90 days
+				String dueDate = sdf.format(now.getTime());
+				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getPatronID());
 				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
