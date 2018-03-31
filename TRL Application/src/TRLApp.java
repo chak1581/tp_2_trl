@@ -53,7 +53,7 @@ public class TRLApp {
 			boolean copyExists = validateCopy(copyID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
-				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", date, patron.getPatronID());
+				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", date, patron.getCurrentPatron().getPatronID());
 				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
