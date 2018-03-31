@@ -7,6 +7,7 @@ public class TRLApp {
 	static Textbook textbook = new Textbook(100, "Software Development", 3);
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
+	
 	public static void main(String[] args) {
 		// loadData();
 		Scanner input = new Scanner(System.in);
@@ -199,6 +200,14 @@ public class TRLApp {
 		patron.createPatronData();
 
 		textbook.createTextbooks(100);
+	}
+	
+	private static void checkoutSummary() {
+		
+		for(int i=0; i<textbook.getCopyList().size(); i++)
+		{
+			textbook.getCopyList().get(i).toString();
+		}
 	}
 
 }
