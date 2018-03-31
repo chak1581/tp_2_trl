@@ -4,6 +4,7 @@ public class Patron {
 	private int patronID;
 	private String patronName;
 	private String patronType;
+	
 	ArrayList<Patron> patronList = new ArrayList<Patron>();
 	ArrayList<Hold> HoldList = new ArrayList<Hold>();
 

@@ -92,12 +92,12 @@ public class TRLApp {
 						}
 					}
 				}
-				if (option == 2) {
+				
+				}if (option == 2) {
 					System.out.println("\nT*******************************************************************T\n"
 							+ "\nR************Thank you for using Textbook Rental System*************R\n"
 							+ "\nL*******************************************************************L");
 					break a;
-				}
 			}
 		}
 	}
@@ -105,6 +105,7 @@ public class TRLApp {
 	 * System.out.println("Start a checkout session ?"); Scanner input = new
 	 * Scanner(System.in); String choice = input.next();
 	 * if(choice.equalsIgnoreCase("Y")) {
+	 * 
 	 * 
 	 * startCheckOut(); }
 	 * 
