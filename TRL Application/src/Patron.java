@@ -60,24 +60,35 @@ public class Patron {
 
 	public void createPatronData() {
 
-		Patron patronOne = new Patron(123, "abc", "student");
-		Patron patronTwo = new Patron(456, "def", "student");
+		Patron patronOne = new Patron(123, "Kathy", "student");
+		Patron patronTwo = new Patron(456, "Amy", "student");
+		Patron patronThree = new Patron(789, "Ryan", "student");
+		Patron patronFour = new Patron(1001, "Dave", "student");
 
 		patronList.add(patronOne);
 		patronList.add(patronTwo);
+		patronList.add(patronThree);
+		patronList.add(patronFour);
 
 		Hold hold1 = new Hold(123, "N");
 		Hold hold2 = new Hold(456, "Y");
-
+		Hold hold3 = new Hold(789, "Y");
+		Hold hold4 = new Hold(1001, "Y");
+		
 		System.out.println(hold1.toString());
 		System.out.println(hold2.toString());
-
+		System.out.println(hold3.toString());
+		System.out.println(hold4.toString());
+		
 		HoldList.add(hold1);
 		HoldList.add(hold2);
-
+		HoldList.add(hold3);
+		HoldList.add(hold4);
+		
 		System.out.println(patronOne.toString());
 		System.out.println(patronTwo.toString());
-
+		System.out.println(patronThree.toString());
+		System.out.println(patronFour.toString());
 	}
 
 	public String toString() {

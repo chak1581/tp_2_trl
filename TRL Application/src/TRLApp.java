@@ -106,27 +106,32 @@ public class TRLApp {
 		}
 	}*/
 		
-	
-	 System.out.println("Start a checkout session ?"); Scanner input = new
-	 Scanner(System.in); String choice = input.next();
+	System.out.println("T*******************************************************************T\n"
+				+ "\nR****************Welcome to TextBook Rental System******************R\n"
+				+ "\nL*******************************************************************L");
+	 System.out.print("Start a checkout session ?[Y or N]: "); 
+	 Scanner input = new Scanner(System.in); 
+	 String choice = input.next();
 	 if(choice.equalsIgnoreCase("Y")) {
 	 startCheckOut(); 
-	 checkoutSummary();
+	 //checkoutSummary();
 	 }else {
-	  
+		 System.out.println("\nT*******************************************************************T\n"
+					+ "\nR************Thank you for using Textbook Rental System*************R\n"
+					+ "\nL*******************************************************************L");
 	 	} 
+	checkoutSummary();
 	 }
 	 
 
 	private static void startCheckOut() {
 
-		System.out.println("Please Enter the Patron ID");
+		System.out.println("Please Enter the Patron ID: ");
 		Scanner input = new Scanner(System.in);
 		int patronID = input.nextInt();
 		boolean patronExists = validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
-
-			System.out.println("***Enter Copies to be Checked Out***");
+			System.out.println("Please Enter CopyID: ");
 			enterCopiesToCheckOut();
 		}
 	}
@@ -135,7 +140,7 @@ public class TRLApp {
 
 		String inputMoreCopies = "Y";
 		while (inputMoreCopies.equalsIgnoreCase("Y")) {
-			System.out.println("Enter CopyID to check out");
+			System.out.println("Enter CopyID: ");
 			Scanner input = new Scanner(System.in);
 			int copyID = input.nextInt();
 			boolean copyExists = validateCopy(copyID);
@@ -153,7 +158,7 @@ public class TRLApp {
 			}
 
 			else {
-				System.out.println("Incorrect Copy ID. Re-Enter Copy ID");
+				System.out.println("Incorrect Copy ID. Please Re-Enter Copy ID: ");
 			}
 
 		}
@@ -201,10 +206,12 @@ public class TRLApp {
 	}
 
 	private static void loadData() {
-
+		System.out.println("==========================TRL Data Record============================");
+		
 		patron.createPatronData();
-
+		
 		textbook.createTextbooks(100);
+		
 	}
 	
 	private static void checkoutSummary() {
