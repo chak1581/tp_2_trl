@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -9,10 +10,11 @@ public class TRLApp {
 	static Textbook textbook = new Textbook(100, "Software Development", 3);
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
+	static ArrayList<Copy> checkoutList = new ArrayList<Copy>();
 	
 	public static void main(String[] args) {
-		// loadData();
-		Scanner input = new Scanner(System.in);
+		loadData();
+		/*Scanner input = new Scanner(System.in);
 		System.out.println("T*******************************************************************T\n"
 				+ "\nR****************Welcome to TextBook Rental System******************R\n"
 				+ "\nL*******************************************************************L");
@@ -102,21 +104,19 @@ public class TRLApp {
 				break a;
 			}
 		}
-	}
-	/*
-	 * System.out.println("Start a checkout session ?"); Scanner input = new
-	 * Scanner(System.in); String choice = input.next();
-	 * if(choice.equalsIgnoreCase("Y")) {
-	 * 
-	 * 
-	 * startCheckOut(); }
-	 * 
-	 * else {
-	 * 
-	 * 
-	 * 
-	 * } }
-	 */
+	}*/
+		
+	
+	 System.out.println("Start a checkout session ?"); Scanner input = new
+	 Scanner(System.in); String choice = input.next();
+	 if(choice.equalsIgnoreCase("Y")) {
+	 startCheckOut(); 
+	 checkoutSummary();
+	 }else {
+	  
+	 	} 
+	 }
+	 
 
 	private static void startCheckOut() {
 
@@ -142,9 +142,10 @@ public class TRLApp {
 
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
+				Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", date, patron.getPatronID());
+				checkoutList.add(aCopy);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out");
-					Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", date ,patron.getPatronID());
 				}
 				System.out.println("More Copies to check Out?");
 				Scanner userInput = new Scanner(System.in);
@@ -208,9 +209,9 @@ public class TRLApp {
 	
 	private static void checkoutSummary() {
 		
-		for(int i=0; i<textbook.getCopyList().size(); i++)
+		for(int i=0; i<checkoutList.size(); i++)
 		{
-			textbook.getCopyList().get(i).toString();
+			checkoutList.get(i).toString();
 		}
 	}
 
