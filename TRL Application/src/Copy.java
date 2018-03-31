@@ -62,14 +62,10 @@ public class Copy {
 
 	public String toString() {
 
-		return "Textbook ID: " + textBookID + " CopyID: " + copyID + " CheckOut Status: " + checkoutStatus
-				+ " Due Date: " + dueDate + " Patron ID: " + patronID;
+		
+		return "Textbook ID: " + textBookID + " CopyID: " + copyID + " CheckOut Status: " + checkoutStatus+ " Due Date: " + dueDate + " Patron ID: " + patronID;
 
+		
 	}
-<<<<<<< HEAD
 
 }
-=======
-	
-}
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
