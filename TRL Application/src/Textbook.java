@@ -34,9 +34,9 @@ public class Textbook {
 		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
 		Calendar now = Calendar.getInstance();
 		now.setTime(new Date());
-		now.add(Calendar.DATE,90);
+		now.add(Calendar.DATE, 90);
 		String dueDate = sdf.format(now.getTime());
-		//String dateString = "03/26/2018";
+		// String dateString = "03/26/2018";
 		Date date = null;
 		try {
 			date = sdf.parse(dueDate);
@@ -47,9 +47,9 @@ public class Textbook {
 		// System.out.println(date);
 
 		System.out.println(toString());
-		Copy copyOne = new Copy(1234,  textbookID,  "Available",  null,  0);
-		Copy copyTwo = new Copy(4567,  textbookID,  "Not Available",  dueDate,  123);
-		Copy copyThree = new Copy(8910,  textbookID,  "Available",  null,  0);
+		Copy copyOne = new Copy(1234, textbookID, "Available", null, 0);
+		Copy copyTwo = new Copy(4567, textbookID, "Not Available", dueDate, 123);
+		Copy copyThree = new Copy(8910, textbookID, "Available", null, 0);
 
 		copyList.add(copyOne);
 		copyList.add(copyTwo);
@@ -60,44 +60,36 @@ public class Textbook {
 		System.out.println(copyThree.toString());
 
 	}
-	
-	public int getTextbookID()
-	{
+
+	public int getTextbookID() {
 		return textbookID;
 	}
 
-	public void setTextbookID(int textbookID)
-	{
+	public void setTextbookID(int textbookID) {
 		this.textbookID = textbookID;
 	}
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title)
-	{
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	public String getAuthor()
-	{
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author)
-	{
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	public int getNumOfCopy()
-	{
+	public int getNumOfCopy() {
 		return numOfCopy;
 	}
 
-	public void setNumOfCopy(int numOfCopy)
-	{
+	public void setNumOfCopy(int numOfCopy) {
 		this.numOfCopy = numOfCopy;
 	}
 
