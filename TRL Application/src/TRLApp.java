@@ -1,6 +1,8 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class TRLApp {
+	static Date date = new Date();
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
 	static Worker worker = new Worker();
@@ -9,7 +11,9 @@ public class TRLApp {
 	static boolean copyAvailable = false;
 	
 	public static void main(String[] args) {
-		// loadData();
+		
+		loadData();
+		
 		Scanner input = new Scanner(System.in);
 		System.out.println("T*******************************************************************T\n"
 				+ "\nR****************Welcome to TextBook Rental System******************R\n"
@@ -92,12 +96,13 @@ public class TRLApp {
 						}
 					}
 				}
-				if (option == 2) {
-					System.out.println("\nT*******************************************************************T\n"
-							+ "\nR************Thank you for using Textbook Rental System*************R\n"
-							+ "\nL*******************************************************************L");
-					break a;
+				
 				}
+			if (option == 2) {
+				System.out.println("\nT*******************************************************************T\n"
+						+ "\nR************Thank you for using Textbook Rental System*************R\n"
+						+ "\nL*******************************************************************L");
+				break a;
 			}
 		}
 	}
@@ -141,6 +146,7 @@ public class TRLApp {
 				System.out.println("Copy Exists");
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out");
+					Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "Checked out", date, patron.getPatronID());
 				}
 				System.out.println("More Copies to check Out?");
 				Scanner userInput = new Scanner(System.in);

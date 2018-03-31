@@ -55,6 +55,46 @@ public class Textbook {
 		System.out.println(copyThree.toString());
 
 	}
+	
+	public int getTextbookID()
+	{
+		return textbookID;
+	}
+
+	public void setTextbookID(int textbookID)
+	{
+		this.textbookID = textbookID;
+	}
+
+	public String getTitle()
+	{
+		return title;
+	}
+
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+
+	public String getAuthor()
+	{
+		return author;
+	}
+
+	public void setAuthor(String author)
+	{
+		this.author = author;
+	}
+
+	public int getNumOfCopy()
+	{
+		return numOfCopy;
+	}
+
+	public void setNumOfCopy(int numOfCopy)
+	{
+		this.numOfCopy = numOfCopy;
+	}
 
 	public String toString() {
 
