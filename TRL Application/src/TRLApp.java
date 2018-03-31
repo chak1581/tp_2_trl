@@ -114,7 +114,6 @@ public class TRLApp {
 	 String choice = input.next();
 	 if(choice.equalsIgnoreCase("Y")) {
 	 startCheckOut(); 
-	 //checkoutSummary();
 	 }else {
 		 System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
@@ -215,7 +214,6 @@ public class TRLApp {
 	}
 	
 	private static void checkoutSummary() {
-		
 		for(int i=0; i<checkoutList.size(); i++)
 		{
 			checkoutList.get(i).toString();
