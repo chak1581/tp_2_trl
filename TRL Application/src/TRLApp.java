@@ -30,8 +30,8 @@ public class TRLApp {
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
 	 	} 
-	 updateStatus();
-	 checkoutSummary();
+	 //updateStatus();
+	// checkoutSummary();
 	 }
 	 
 	private static void startCheckOut() {
@@ -77,6 +77,15 @@ public class TRLApp {
 
 		}
 		if(inputMoreCopies.equalsIgnoreCase("N")) {
+			//System.out.println(checkoutList.);
+			System.out.println("Complete Check Out?[Y or N]:");
+			Scanner input = new Scanner(System.in);
+			String completeCheckOut = input.next();
+			if(completeCheckOut.equalsIgnoreCase("Y")){
+				updateStatus();
+				checkoutSummary();
+			}
+			
 			System.out.println("==========Session end==========");
 		}
 	}
@@ -91,6 +100,9 @@ public class TRLApp {
 				copyExists = true;
 				if (textbook.getCopyList().get(i).getCheckoutStatus().equalsIgnoreCase("Available")) {
 					copyAvailable = true;
+				}
+				else{
+					copyAvailable = false;
 				}
 				break;
 			}
