@@ -72,7 +72,7 @@ public class Patron {
 		patronList.add(patronFour);
 
 		Hold hold1 = new Hold(123, "N");
-		Hold hold2 = new Hold(456, "Y");
+		Hold hold2 = new Hold(456, "N");
 		Hold hold3 = new Hold(789, "Y");
 		Hold hold4 = new Hold(1001, "Y");
 
@@ -98,9 +98,27 @@ public class Patron {
 
 	}
 
-	public Patron getCurrentPatron() {
-		Patron current_patron = patronList.get(getPatronID());
-		return current_patron;
+	static boolean validatePatronID(int patronID) {
+	
+		boolean patronExists = false;
+	
+		for (int i = 0; i < TRLApp.patron.getPatronList().size(); i++) {
+	
+			if (TRLApp.patron.getPatronList().get(i).getPatronID() == patronID) {
+	
+				patronExists = true;
+				System.out.println("Patron Exists");
+				System.out.println(TRLApp.patron.getPatronList().get(i).toString());
+				TRLApp.holdStatus = TRLApp.patron.getHoldList().get(i).getHoldStatus();
+				System.out.println("Hold Status: " + TRLApp.holdStatus);
+				break;
+			}
+		}
+		if (patronExists == false) {
+			System.out.println("The entered Patron ID does not exist in the system.");
+		}
+	
+		return patronExists;
 	}
 
 }

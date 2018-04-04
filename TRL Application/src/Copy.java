@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -64,11 +65,7 @@ public class Copy {
 		this.patronID = patronID;
 	}
 
-	public Copy(int copyID,Patron patron) {
-		
-		this.copyID = copyID;
-		
-	}
+	
 	public String toString(){
 		
 		
@@ -77,6 +74,38 @@ public class Copy {
 		
 	}
 
+	static boolean copyExists = false;
+	static boolean validateAndCheckOutCopy(int copyID, int patronID) {
 	
+		TRLApp.c.setTime(new Date());
+		TRLApp.c.add(Calendar.DATE, 90);
+		Date dueDate = TRLApp.c.getTime();
+	
+		for (int i = 0; i < TRLApp.textbook.getCopyList().size(); i++) {
+	
+			if (TRLApp.textbook.getCopyList().get(i).getCopyID() == copyID) {
+				copyExists = true;
+				
+				if (TRLApp.textbook.getCopyList().get(i).getCheckoutStatus().equalsIgnoreCase("Available")) {
+					TRLApp.copyAvailable = true;
+					TRLApp.textbook.getCopyList().get(i).setCheckoutStatus("Checked Out");
+					TRLApp.textbook.getCopyList().get(i).setDueDate(dueDate);
+					TRLApp.textbook.getCopyList().get(i).setPatronID(patronID);
+					TRLApp.checkoutList.add(TRLApp.textbook.getCopyList().get(i));
+					break;
+				}
+				else{
+					TRLApp.copyAvailable = false;
+				}
+				
+			}
+			
+			else {
+				copyExists = false;
+			}
+		}
+	
+		return copyExists;
+	}
 	
 }

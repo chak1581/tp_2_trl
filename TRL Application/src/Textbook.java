@@ -11,13 +11,13 @@ public class Textbook {
 	private String author;
 	private int numOfCopy;
 	private ArrayList<Copy> copyList = new ArrayList<Copy>();
-	ArrayList<Copy>history = new ArrayList<Copy>();
+	ArrayList<RentalHistory>history = new ArrayList<RentalHistory>();
 
-	public ArrayList<Copy> getHistory() {
+	public ArrayList<RentalHistory> getHistory() {
 		return history;
 	}
 
-	public void setHistory(ArrayList<Copy> history) {
+	public void setHistory(ArrayList<RentalHistory> history) {
 		this.history = history;
 	}
 
@@ -73,16 +73,16 @@ public class Textbook {
 			}
 		*/
 		
-		Copy copyHistoryOne = new Copy(1234, new Patron(123, "Kathy", "student"));
-		Copy copyHistoryTwo = new Copy(1234, new Patron(456, "Amy", "student"));
-		Copy copyHistoryThree = new Copy(8910, new Patron(123, "Kathy", "student"));
+		RentalHistory copyHistoryOne = new RentalHistory(1234,123,"Kathy",date,date);
+		RentalHistory copyHistoryTwo = new RentalHistory(1234,456,"Amy",date,date);
+		RentalHistory copyHistoryThree = new RentalHistory(4567,123,"Kathy",date,date);
 		
 		history.add(copyHistoryOne);
 		history.add(copyHistoryTwo);
 		history.add(copyHistoryThree);
 		
-	    //history.createHistory(copyList);
-	    
+		//System.out.println(history.toString());
+		
 		System.out.println(copyOne.toString());
 		System.out.println(copyTwo.toString());
 		System.out.println(copyThree.toString());

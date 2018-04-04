@@ -1,7 +1,8 @@
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class TRLApp {
@@ -14,6 +15,7 @@ public class TRLApp {
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
 	static ArrayList<Copy> checkoutList = new ArrayList<Copy>();
+	static int patronID;
 	
 	public static void main(String[] args) {
 	loadData();	
@@ -38,35 +40,29 @@ public class TRLApp {
 
 		System.out.println("Please Enter the Patron ID: ");
 		Scanner input = new Scanner(System.in);
-		int patronID = input.nextInt();
-		boolean patronExists = validatePatronID(patronID);
+		patronID = input.nextInt();
+		boolean patronExists = Patron.validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
-			enterCopiesToCheckOut();
+			enterCopiesToCheckOut(patronID);
 		}else {
-			//enterCopiesToCheckOut();
+			
+			newCheckOut();
 		}
 	}
 
-	private static void enterCopiesToCheckOut() {
+	private static void enterCopiesToCheckOut(int patronID) {
 		String inputMoreCopies = "Y";
 		while (inputMoreCopies.equalsIgnoreCase("Y")) {
 			System.out.println("Please Enter CopyID: ");
 			Scanner input = new Scanner(System.in);
 			int copyID = input.nextInt();
-			boolean copyExists = validateCopy(copyID);
+			boolean copyExists = Copy.validateAndCheckOutCopy(copyID, patronID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
 				displayRentalHistory(copyID);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
-				}else {
-					c.setTime(new Date());
-					c.add(Calendar.DATE, 90);
-					Date dueDate = c.getTime();
-					Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getCurrentPatron().getPatronID());
-					checkoutList.add(aCopy);
 				}
-			
 				System.out.println("More Copies to check Out[Y or N]: ");
 				Scanner userInput = new Scanner(System.in);
 				inputMoreCopies = userInput.next();
@@ -78,16 +74,16 @@ public class TRLApp {
 
 		}
 		if(inputMoreCopies.equalsIgnoreCase("N")) {
-			//System.out.println(checkoutList.);
 			System.out.println("Complete Check Out?[Y or N]:");
 			Scanner input = new Scanner(System.in);
 			String completeCheckOut = input.next();
 			if(completeCheckOut.equalsIgnoreCase("Y")){
-				updateStatus();
+				//updateStatus();
 				checkoutSummary();
+				newCheckOut();
 			}
 			
-			System.out.println("==========Session end==========");
+			
 		}
 	}
 
@@ -100,15 +96,8 @@ public class TRLApp {
     
     if(rentalDisplay.equalsIgnoreCase("Y")) {
     	
-    	System.out.println("Rental History for Copy ID "+copyID);
-    	
-    	for(int i =0; i<textbook.getHistory().size();i++) {
-    		
-    		if(textbook.getHistory().get(i).getCopyID()==copyID) {
-    			
-    			System.out.println("Copy ID: "+copyID  );
-    		}
-    	}
+    	RentalHistory.copyRentalHistory(copyID);
+
     }
     else 
     	{
@@ -116,51 +105,6 @@ public class TRLApp {
     	
     	}
 		
-	}
-
-
-	private static boolean validateCopy(int copyID) {
-
-		boolean copyExists = false;
-
-		for (int i = 0; i < textbook.getCopyList().size(); i++) {
-
-			if (textbook.getCopyList().get(i).getCopyID() == copyID) {
-				copyExists = true;
-				if (textbook.getCopyList().get(i).getCheckoutStatus().equalsIgnoreCase("Available")) {
-					copyAvailable = true;
-				}
-				else{
-					copyAvailable = false;
-				}
-				break;
-			}
-		}
-
-		return copyExists;
-	}
-
-	private static boolean validatePatronID(int patronID) {
-
-		boolean patronExists = false;
-
-		for (int i = 0; i < patron.getPatronList().size(); i++) {
-
-			if (patron.getPatronList().get(i).getPatronID() == patronID) {
-
-				patronExists = true;
-				System.out.println("Patron Exists");
-				System.out.println(patron.getPatronList().get(i).toString());
-				holdStatus = patron.getHoldList().get(i).getHoldStatus();
-				System.out.println("Hold Status: " + holdStatus);
-				break;
-			}
-		}
-		if (patronExists == false) {
-			System.out.println("The entered Patron ID does not exist in the system.");
-		}
-
-		return patronExists;
 	}
 
 	private static void loadData() {
@@ -179,9 +123,25 @@ public class TRLApp {
 		}
 	}
 	
-	private static void updateStatus() {
+	/*private static void updateStatus() {
 		for (int i=0; i<checkoutList.size();i++) {
 			checkoutList.get(i).setCheckoutStatus("checked out");
+		}
+	}*/
+	
+	private static void newCheckOut() {
+		
+		
+		System.out.println("Start a New Session Again? [Y or N]");
+		
+		Scanner userInput = new Scanner(System.in);
+		if(userInput.next().equalsIgnoreCase("Y")) {
+			checkoutList.clear();
+			startCheckOut();
+		}
+		else {
+			System.out.println("==========Session end==========");
+			return;
 		}
 	}
 
