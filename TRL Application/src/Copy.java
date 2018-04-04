@@ -1,11 +1,12 @@
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Copy {
+
+	// checkoutStatus indicated by 1-inLibrary; 2-checkedOut; 3-overdue
 	private int textBookID;
 	private int copyID;
 	private String checkoutStatus;
-	private String dueDate;
+	private Date dueDate;
 	private int patronID;
 
 	public int getCopyID() {
@@ -24,11 +25,11 @@ public class Copy {
 		this.checkoutStatus = checkoutStatus;
 	}
 
-	public String getDueDate() {
+	public Date getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(String dueDate) {
+	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -52,7 +53,7 @@ public class Copy {
 
 	}
 
-	public Copy(int copyID, int textBookID, String checkoutStatus, String dueDate, int patronID) {
+	public Copy(int copyID, int textBookID, String checkoutStatus, Date dueDate, int patronID) {
 		this.copyID = copyID;
 		this.textBookID = textBookID;
 		this.checkoutStatus = checkoutStatus;

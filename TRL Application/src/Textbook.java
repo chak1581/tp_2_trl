@@ -44,7 +44,7 @@ public class Textbook {
 
 		System.out.println(toString());
 		Copy copyOne = new Copy(1234, textbookID, "Available", null, 0);
-		Copy copyTwo = new Copy(4567, textbookID, "Not Available", dateString, 123);
+		Copy copyTwo = new Copy(4567, textbookID, "Not Available", date, 123);
 		Copy copyThree = new Copy(8910, textbookID, "Available", null, 0);
 
 		copyList.add(copyOne);

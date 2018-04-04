@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class TRLApp {
 	static SimpleDateFormat dF = new SimpleDateFormat("MM/dd/yyyy");
-	static Calendar c = Calendar.getInstance(); 
+	static Calendar c = Calendar.getInstance();
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
 	static Worker worker = new Worker();
@@ -14,26 +14,26 @@ public class TRLApp {
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
 	static ArrayList<Copy> checkoutList = new ArrayList<Copy>();
-	
+
 	public static void main(String[] args) {
-	loadData();	
-	System.out.println("T*******************************************************************T\n"
+		loadData();
+		System.out.println("T*******************************************************************T\n"
 				+ "\nR****************Welcome to TextBook Rental System******************R\n"
 				+ "\nL*******************************************************************L");
-	 System.out.print("Start a checkout session ?[Y or N]: "); 
-	 Scanner input = new Scanner(System.in); 
-	 String choice = input.next();
-	 if(choice.equalsIgnoreCase("Y")) {
-	 startCheckOut(); 
-	 }else {
-		 System.out.println("\nT*******************************************************************T\n"
+		System.out.print("Start a checkout session ?[Y or N]: ");
+		Scanner input = new Scanner(System.in);
+		String choice = input.next();
+		if (choice.equalsIgnoreCase("Y")) {
+			startCheckOut();
+		} else {
+			System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
-	 	} 
-	 updateStatus();
-	 checkoutSummary();
-	 }
-	 
+		}
+		// updateStatus();
+		// checkoutSummary();
+	}
+
 	private static void startCheckOut() {
 
 		System.out.println("Please Enter the Patron ID: ");
@@ -42,7 +42,7 @@ public class TRLApp {
 		boolean patronExists = validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
 			enterCopiesToCheckOut();
-		}else {
+		} else {
 			enterCopiesToCheckOut();
 		}
 	}
@@ -58,14 +58,15 @@ public class TRLApp {
 				System.out.println("Copy Exists");
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
-				}else {
+				} else {
 					c.setTime(new Date());
 					c.add(Calendar.DATE, 90);
-					String dueDate = dF.format(c.getTime());
-					Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate, patron.getCurrentPatron().getPatronID());
+					Date dueDate = c.getTime();
+					Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate,
+							patron.getCurrentPatron().getPatronID());
 					checkoutList.add(aCopy);
 				}
-			
+
 				System.out.println("More Copies to check Out[Y or N]: ");
 				Scanner userInput = new Scanner(System.in);
 				inputMoreCopies = userInput.next();
@@ -76,7 +77,16 @@ public class TRLApp {
 			}
 
 		}
-		if(inputMoreCopies.equalsIgnoreCase("N")) {
+		if (inputMoreCopies.equalsIgnoreCase("N")) {
+			// System.out.println(checkoutList.);
+			System.out.println("Complete Check Out?[Y or N]:");
+			Scanner input = new Scanner(System.in);
+			String completeCheckOut = input.next();
+			if (completeCheckOut.equalsIgnoreCase("Y")) {
+				updateStatus();
+				checkoutSummary();
+			}
+
 			System.out.println("==========Session end==========");
 		}
 	}
@@ -91,6 +101,8 @@ public class TRLApp {
 				copyExists = true;
 				if (textbook.getCopyList().get(i).getCheckoutStatus().equalsIgnoreCase("Available")) {
 					copyAvailable = true;
+				} else {
+					copyAvailable = false;
 				}
 				break;
 			}
@@ -124,22 +136,21 @@ public class TRLApp {
 
 	private static void loadData() {
 		System.out.println("==========================TRL Data Record============================");
-		
+
 		patron.createPatronData();
-		
+
 		textbook.createTextbooks(100);
-		
+
 	}
-	
+
 	private static void checkoutSummary() {
-		for(int i=0; i<checkoutList.size(); i++)
-		{
+		for (int i = 0; i < checkoutList.size(); i++) {
 			System.out.println(checkoutList.get(i).toString());
 		}
 	}
-	
+
 	private static void updateStatus() {
-		for (int i=0; i<checkoutList.size();i++) {
+		for (int i = 0; i < checkoutList.size(); i++) {
 			checkoutList.get(i).setCheckoutStatus("checked out");
 		}
 	}
