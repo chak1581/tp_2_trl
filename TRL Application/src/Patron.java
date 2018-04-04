@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-// Patron
+
+// commit Patron 
 public class Patron {
 	private int patronID;
 	private String patronName;
@@ -97,8 +98,7 @@ public class Patron {
 
 	}
 
-	public Patron getCurrentPatron()
-	{
+	public Patron getCurrentPatron() {
 		Patron current_patron = patronList.get(getPatronID());
 		return current_patron;
 	}
