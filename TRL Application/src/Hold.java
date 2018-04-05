@@ -32,11 +32,29 @@ public class Hold {
 	public Hold() {
 
 	}
+<<<<<<< HEAD
 
 	public Hold(int patronID, String holdStatus) {
 
 		this.patronID = patronID;
 		this.holdStatus = holdStatus;
+=======
+	
+
+
+	public Hold(int patronID, String holdStatus) {
+		
+		this.patronID=patronID;
+		this.holdStatus=holdStatus;
+	}
+
+public String toString(){
+		
+		
+		return "Patron ID: "+patronID+" Hold Status: "+holdStatus;
+		
+		
+>>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 	}
 
 	public String toString() {
