@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-// commit Patron 
+// add more patron data
 public class Patron {
 	private int patronID;
 	private String patronName;
