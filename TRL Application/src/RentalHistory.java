@@ -50,9 +50,9 @@ static void copyRentalHistory(int copyID) {
 			
 			if(TRLApp.textbook.getHistory().get(i).getCopyID()==copyID) {
 				
-		        System.out.println("Patron ID: " +TRLApp.textbook.getHistory().get(i).getPatronID()+" Patron Name: "
-		        +TRLApp.textbook.getHistory().get(i).getPatronName()+" Due Date: "+TRLApp.textbook.getHistory().get(i).getDueDate()+
-		        " Returned On: "+TRLApp.textbook.getHistory().get(i).getReturnedDate());
+		        System.out.println("Patron ID: " +TRLApp.textbook.getHistory().get(i).getPatronID()+" | Patron Name: "
+		        +TRLApp.textbook.getHistory().get(i).getPatronName()+" | Due Date: "+TRLApp.textbook.getHistory().get(i).getDueDate()+
+		        " | Returned On: "+TRLApp.textbook.getHistory().get(i).getReturnedDate());
 		        historyFound = true;
 				
 			}

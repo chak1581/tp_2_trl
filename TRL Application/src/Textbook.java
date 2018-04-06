@@ -153,7 +153,7 @@ public class Textbook {
 
 	public String toString() {
 
-		return "TextBook ID: " + textbookID + " Title: " + title + " Number of Copies: " + copyList.size();
+		return "TextBook ID: " + textbookID + " | Title: " + title + " | Number of Copies: " + copyList.size();
 	}
 
 }

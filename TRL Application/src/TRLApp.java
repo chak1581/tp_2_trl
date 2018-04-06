@@ -32,21 +32,15 @@ public class TRLApp {
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
 	 		} 
+		System.out.println("\nT*******************************************************************T\n"
+				+ "\nR************Thank you for using Textbook Rental System*************R\n"
+				+ "\nL*******************************************************************L");
 	 }
 	 
 	private static void startCheckOut() {
 		Scanner input = new Scanner(System.in);
-		int patronID = 0;
-		do {		
-			try {
-			System.out.println("Please Enter the Patron ID: ");
-			patronID = input.nextInt();
-		}catch(InputMismatchException ex) {
-			System.out.println("You must put in a number!");
-			input.next();
-			}
-		}while(Patron.validatePatronID(patronID));
-		
+		System.out.println("Please Enter the Patron ID: ");
+		int patronID = input.nextInt();
 		boolean patronExists = Patron.validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
 			enterCopiesToCheckOut(patronID);
@@ -57,6 +51,7 @@ public class TRLApp {
 		else if(patronExists == false){
 			System.out.println("The entered Patron ID does not exist in the system.");
 			newCheckOut();
+			
 		}
 	}
 
@@ -64,14 +59,9 @@ public class TRLApp {
 		String inputMoreCopies = "Y";
 		while (inputMoreCopies.equalsIgnoreCase("Y")) {
 			Scanner input = new Scanner(System.in);
-			int copyID = 0;
-			try {
-				System.out.println("Please Enter CopyID: ");
-				copyID = input.nextInt();
-			}catch(InputMismatchException ex) {
-				System.out.println("You must put in a number!");
-				input.next();
-			}
+			System.out.println("Please Enter CopyID: ");
+			int copyID = input.nextInt();
+			
 			boolean copyExists = Copy.validateAndCheckOutCopy(copyID, patronID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
