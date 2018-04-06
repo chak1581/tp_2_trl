@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 public class Copy {
 
-	//checkoutStatus indicated by 1-inLibrary; 2-checkedOut; 3-overdue
 	private int textBookID;
 	private int copyID;
 	private String checkoutStatus;

@@ -10,7 +10,6 @@ public class TRLApp {
 	static Calendar c = Calendar.getInstance(); 
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
-	//static Worker worker = new Worker();
 	static Textbook textbook = new Textbook(100, "Software Development", 3);
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
@@ -32,8 +31,6 @@ public class TRLApp {
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
 	 	} 
-	 //updateStatus();
-	// checkoutSummary();
 	 }
 	 
 	private static void startCheckOut() {
@@ -78,7 +75,6 @@ public class TRLApp {
 			Scanner input = new Scanner(System.in);
 			String completeCheckOut = input.next();
 			if(completeCheckOut.equalsIgnoreCase("Y")){
-				//updateStatus();
 				checkoutSummary();
 				newCheckOut();
 			}
@@ -122,12 +118,6 @@ public class TRLApp {
 			System.out.println(checkoutList.get(i).toString());
 		}
 	}
-	
-	/*private static void updateStatus() {
-		for (int i=0; i<checkoutList.size();i++) {
-			checkoutList.get(i).setCheckoutStatus("checked out");
-		}
-	}*/
 	
 	private static void newCheckOut() {
 		

@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-// commit Patron 
 public class Patron {
 	private int patronID;
 	private String patronName;
