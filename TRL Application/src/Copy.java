@@ -1,14 +1,24 @@
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+import java.util.Calendar;
+>>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 import java.util.Date;
+import java.util.HashMap;
 
 public class Copy {
 
+<<<<<<< HEAD
 	// checkoutStatus indicated by 1-inLibrary; 2-checkedOut; 3-overdue
+=======
+	//checkoutStatus indicated by 1-inLibrary; 2-checkedOut; 3-overdue
+>>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 	private int textBookID;
 	private int copyID;
 	private String checkoutStatus;
 	private Date dueDate;
 	private int patronID;
-
+	
 	public int getCopyID() {
 		return copyID;
 	}
@@ -40,7 +50,7 @@ public class Copy {
 	public void setPatronID(int patronID) {
 		this.patronID = patronID;
 	}
-
+	
 	public int getTextBookID() {
 		return textBookID;
 	}
@@ -49,11 +59,16 @@ public class Copy {
 		this.textBookID = textBookID;
 	}
 
-	public Copy() {
-
+	public Copy(){
+		
 	}
 
+<<<<<<< HEAD
 	public Copy(int copyID, int textBookID, String checkoutStatus, Date dueDate, int patronID) {
+=======
+	public Copy(int copyID,int textBookID,String checkoutStatus,Date dueDate,int patronID ) 
+	{
+>>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 		this.copyID = copyID;
 		this.textBookID = textBookID;
 		this.checkoutStatus = checkoutStatus;
@@ -61,11 +76,47 @@ public class Copy {
 		this.patronID = patronID;
 	}
 
-	public String toString() {
-
-		return "Textbook ID: " + textBookID + " CopyID: " + copyID + " CheckOut Status: " + checkoutStatus
-				+ " Due Date: " + dueDate + " Patron ID: " + patronID;
-
+	
+	public String toString(){
+		
+		
+		return "Textbook ID: "+textBookID+" CopyID: "+copyID+" CheckOut Status: "+checkoutStatus+ " Due Date: "+dueDate+ " Patron ID: "+patronID;
+		
+		
 	}
 
+	static boolean copyExists = false;
+	static boolean validateAndCheckOutCopy(int copyID, int patronID) {
+	
+		TRLApp.c.setTime(new Date());
+		TRLApp.c.add(Calendar.DATE, 90);
+		Date dueDate = TRLApp.c.getTime();
+	
+		for (int i = 0; i < TRLApp.textbook.getCopyList().size(); i++) {
+	
+			if (TRLApp.textbook.getCopyList().get(i).getCopyID() == copyID) {
+				copyExists = true;
+				
+				if (TRLApp.textbook.getCopyList().get(i).getCheckoutStatus().equalsIgnoreCase("Available")) {
+					TRLApp.copyAvailable = true;
+					TRLApp.textbook.getCopyList().get(i).setCheckoutStatus("Checked Out");
+					TRLApp.textbook.getCopyList().get(i).setDueDate(dueDate);
+					TRLApp.textbook.getCopyList().get(i).setPatronID(patronID);
+					TRLApp.checkoutList.add(TRLApp.textbook.getCopyList().get(i));
+					break;
+				}
+				else{
+					TRLApp.copyAvailable = false;
+				}
+				
+			}
+			
+			else {
+				copyExists = false;
+			}
+		}
+	
+		return copyExists;
+	}
+	
 }
