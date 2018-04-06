@@ -58,11 +58,11 @@ public class Textbook {
 		Copy copyTwo = new Copy(1002, textbookID, "Not Available", date, 123);
 		Copy copyThree = new Copy(2001, textbookID, "Available", null, 0);
 		Copy copyFour = new Copy(2002, textbookID, "Available", null, 0);
-		Copy copyFive = new Copy(3001, textbookID, "Not Available", date, 123);
+		Copy copyFive = new Copy(3001, textbookID, "Not Available", date, 303);
 		Copy copySix = new Copy(3002, textbookID, "Available", null, 0);
-		Copy copySeven = new Copy(4001, textbookID, "Not Available", date, 123);
+		Copy copySeven = new Copy(4001, textbookID, "Not Available", date, 505);
 		Copy copyEight = new Copy(4002, textbookID, "Available", null, 0);
-		Copy copyNine = new Copy(5001, textbookID, "Not Available", date, 123);
+		Copy copyNine = new Copy(5001, textbookID, "Not Available", date, 789);
 		Copy copyTen = new Copy(5002, textbookID, "Available", null, 0);
 
 		copyList.add(copyOne);
