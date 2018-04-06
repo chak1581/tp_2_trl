@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Patron {
 	private int patronID;
@@ -87,15 +88,6 @@ public class Patron {
 		Hold hold7 = new Hold(404, "N");
 		Hold hold8 = new Hold(505, "Y");
 
-		System.out.println(hold1.toString());
-		System.out.println(hold2.toString());
-		System.out.println(hold3.toString());
-		System.out.println(hold4.toString());
-		System.out.println(hold5.toString());
-		System.out.println(hold6.toString());
-		System.out.println(hold7.toString());
-		System.out.println(hold8.toString());
-
 		HoldList.add(hold1);
 		HoldList.add(hold2);
 		HoldList.add(hold3);
@@ -105,19 +97,25 @@ public class Patron {
 		HoldList.add(hold7);
 		HoldList.add(hold8);
 
-		System.out.println(patronOne.toString());
-		System.out.println(patronTwo.toString());
-		System.out.println(patronThree.toString());
-		System.out.println(patronFour.toString());
-		System.out.println(patronFive.toString());
-		System.out.println(patronSix.toString());
-		System.out.println(patronSeven.toString());
-		System.out.println(patronEight.toString());
+		Scanner input = new Scanner(System.in);
+		System.out.println("Display Patron information? [Y or N]");
+		String display = input.next();
+		if(display.equalsIgnoreCase("Y")){
+			System.out.println(patronOne.toString() +  " | Hold Status: " + hold1.getHoldStatus());
+			System.out.println(patronTwo.toString() + " | Hold Status: " + hold2.getHoldStatus());
+			System.out.println(patronThree.toString() + " | Hold Status: " + hold3.getHoldStatus());
+			System.out.println(patronFour.toString() + " | Hold Status: " + hold4.getHoldStatus());
+			System.out.println(patronFive.toString() + " | Hold Status: " + hold5.getHoldStatus());
+			System.out.println(patronSix.toString() + " | Hold Status: " + hold6.getHoldStatus());
+			System.out.println(patronSeven.toString() + " | Hold Status: " + hold7.getHoldStatus());
+			System.out.println(patronEight.toString() + " | Hold Status: " + hold8.getHoldStatus());
+		}
+		
 	}
 
 	public String toString() {
 
-		return "Patron ID: " + patronID + " Patron Name: " + patronName + " Patron Type: " + patronType;
+		return "Patron ID: " + patronID + " | Patron Name: " + patronName + " | Patron Type: " + patronType;
 
 	}
 
@@ -138,7 +136,7 @@ public class Patron {
 			}
 		}
 		if (patronExists == false) {
-			System.out.println("The entered Patron ID does not exist in the system.");
+			//System.out.println("The entered Patron ID does not exist in the system.");
 		}
 
 		return patronExists;

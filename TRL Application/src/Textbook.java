@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Textbook {
 	private int textbookID;
@@ -53,7 +54,6 @@ public class Textbook {
 		}
 		// System.out.println(date);
 
-		System.out.println(toString());
 		Copy copyOne = new Copy(1001, textbookID, "Available", null, 0);
 		Copy copyTwo = new Copy(1002, textbookID, "Not Available", date, 123);
 		Copy copyThree = new Copy(2001, textbookID, "Available", null, 0);
@@ -84,20 +84,39 @@ public class Textbook {
 		 * historyMap.put(copyList.get(i).getCopyID(), 4567); }
 		 */
 
-		RentalHistory copyHistoryOne = new RentalHistory(1234, 123, "Kathy", date, date);
-		RentalHistory copyHistoryTwo = new RentalHistory(1234, 456, "Amy", date, date);
-		RentalHistory copyHistoryThree = new RentalHistory(4567, 123, "Kathy", date, date);
+		RentalHistory copyHistoryOne = new RentalHistory(1002, 123, "Kathy", date, date);
+		RentalHistory copyHistoryTwo = new RentalHistory(3001, 456, "Amy", date, date);
+		RentalHistory copyHistoryThree = new RentalHistory(4001, 123, "Kathy", date, date);
+		RentalHistory copyHistoryFour = new RentalHistory(5002, 456, "Amy", date, date);
+		RentalHistory copyHistoryFive = new RentalHistory(5002, 123, "Kathy", date, date);
+		
 
 		history.add(copyHistoryOne);
 		history.add(copyHistoryTwo);
 		history.add(copyHistoryThree);
+		history.add(copyHistoryFour);
+		history.add(copyHistoryFive);
+
 
 		// System.out.println(history.toString());
-
-		System.out.println(copyOne.toString());
-		System.out.println(copyTwo.toString());
-		System.out.println(copyThree.toString());
-
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Display Textbook information? [Y or N]");
+		String display = input.next();
+		if(display.equalsIgnoreCase("Y")) {
+			System.out.println(toString());
+			System.out.println(copyOne.toString());
+			System.out.println(copyTwo.toString());
+			System.out.println(copyThree.toString());
+			System.out.println(copyFour.toString());
+			System.out.println(copyFive.toString());
+			System.out.println(copySix.toString());
+			System.out.println(copySeven.toString());
+			System.out.println(copyEight.toString());
+			System.out.println(copyNine.toString());
+			System.out.println(copyTen.toString());
+		}
+		
 	}
 
 	public int getTextbookID() {
@@ -134,7 +153,7 @@ public class Textbook {
 
 	public String toString() {
 
-		return "TextBook ID: " + textbookID + " Title: " + title + " Number of Copies: " + numOfCopy;
+		return "TextBook ID: " + textbookID + " Title: " + title + " Number of Copies: " + copyList.size();
 	}
 
 }

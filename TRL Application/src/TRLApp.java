@@ -2,6 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,32 +18,44 @@ public class TRLApp {
 	static int patronID;
 	
 	public static void main(String[] args) {
-	loadData();	
-	System.out.println("T*******************************************************************T\n"
+		loadData();	
+		System.out.println("T*******************************************************************T\n"
 				+ "\nR****************Welcome to TextBook Rental System******************R\n"
 				+ "\nL*******************************************************************L");
-	 System.out.print("Start a checkout session ?[Y or N]: "); 
-	 Scanner input = new Scanner(System.in); 
-	 String choice = input.next();
-	 if(choice.equalsIgnoreCase("Y")) {
-	 startCheckOut(); 
-	 }else {
-		 System.out.println("\nT*******************************************************************T\n"
+		System.out.print("Start a checkout session ?[Y or N]: "); 
+		Scanner input = new Scanner(System.in); 
+		String choice = input.next();
+		if(choice.equalsIgnoreCase("Y")) {
+			startCheckOut(); 
+		}else {
+			System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
-	 	} 
+	 		} 
 	 }
 	 
 	private static void startCheckOut() {
-
-		System.out.println("Please Enter the Patron ID: ");
 		Scanner input = new Scanner(System.in);
-		patronID = input.nextInt();
+		int patronID = 0;
+		do {		
+			try {
+			System.out.println("Please Enter the Patron ID: ");
+			patronID = input.nextInt();
+		}catch(InputMismatchException ex) {
+			System.out.println("You must put in a number!");
+			input.next();
+			}
+		}while(Patron.validatePatronID(patronID));
+		
 		boolean patronExists = Patron.validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
 			enterCopiesToCheckOut(patronID);
-		}else {
-			
+		}else if(patronExists == true && holdStatus == "Y"){
+			System.out.println("There is a hold in patron's account. Checkout is prohibited.");
+			newCheckOut();
+		}
+		else if(patronExists == false){
+			System.out.println("The entered Patron ID does not exist in the system.");
 			newCheckOut();
 		}
 	}
@@ -50,9 +63,15 @@ public class TRLApp {
 	private static void enterCopiesToCheckOut(int patronID) {
 		String inputMoreCopies = "Y";
 		while (inputMoreCopies.equalsIgnoreCase("Y")) {
-			System.out.println("Please Enter CopyID: ");
 			Scanner input = new Scanner(System.in);
-			int copyID = input.nextInt();
+			int copyID = 0;
+			try {
+				System.out.println("Please Enter CopyID: ");
+				copyID = input.nextInt();
+			}catch(InputMismatchException ex) {
+				System.out.println("You must put in a number!");
+				input.next();
+			}
 			boolean copyExists = Copy.validateAndCheckOutCopy(copyID, patronID);
 			if (copyExists == true) {
 				System.out.println("Copy Exists");
@@ -78,8 +97,6 @@ public class TRLApp {
 				checkoutSummary();
 				newCheckOut();
 			}
-			
-			
 		}
 	}
 
@@ -104,12 +121,13 @@ public class TRLApp {
 	}
 
 	private static void loadData() {
-		System.out.println("==========================TRL Data Record============================");
+		System.out.println("Creating Patron data & Textbook Data...");		
 		
 		patron.createPatronData();
 		
 		textbook.createTextbooks(100);
 		
+		System.out.println("TRL Data loaded succesfully!");
 	}
 	
 	private static void checkoutSummary() {
