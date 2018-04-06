@@ -72,11 +72,7 @@ public class Patron {
 		patronList.add(patronFour);
 
 		Hold hold1 = new Hold(123, "N");
-<<<<<<< HEAD
-		Hold hold2 = new Hold(456, "Y");
-=======
 		Hold hold2 = new Hold(456, "N");
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 		Hold hold3 = new Hold(789, "Y");
 		Hold hold4 = new Hold(1001, "Y");
 
@@ -102,12 +98,6 @@ public class Patron {
 
 	}
 
-<<<<<<< HEAD
-	public Patron getCurrentPatron()
-	{
-		Patron current_patron = patronList.get(getPatronID());
-		return current_patron;
-=======
 	static boolean validatePatronID(int patronID) {
 	
 		boolean patronExists = false;
@@ -129,7 +119,6 @@ public class Patron {
 		}
 	
 		return patronExists;
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 	}
 
 }

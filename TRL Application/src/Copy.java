@@ -1,19 +1,17 @@
 import java.util.ArrayList;
-<<<<<<< HEAD
-import java.util.Date;
-=======
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 
 public class Copy {
+
+	//checkoutStatus indicated by 1-inLibrary; 2-checkedOut; 3-overdue
 	private int textBookID;
 	private int copyID;
 	private String checkoutStatus;
 	private Date dueDate;
 	private int patronID;
-
+	
 	public int getCopyID() {
 		return copyID;
 	}
@@ -45,7 +43,7 @@ public class Copy {
 	public void setPatronID(int patronID) {
 		this.patronID = patronID;
 	}
-
+	
 	public int getTextBookID() {
 		return textBookID;
 	}
@@ -54,16 +52,12 @@ public class Copy {
 		this.textBookID = textBookID;
 	}
 
-	public Copy() {
-
+	public Copy(){
+		
 	}
 
-<<<<<<< HEAD
-	public Copy(int copyID, int textBookID, String checkoutStatus, String dueDate, int patronID) {
-=======
 	public Copy(int copyID,int textBookID,String checkoutStatus,Date dueDate,int patronID ) 
 	{
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 		this.copyID = copyID;
 		this.textBookID = textBookID;
 		this.checkoutStatus = checkoutStatus;
@@ -71,15 +65,6 @@ public class Copy {
 		this.patronID = patronID;
 	}
 
-<<<<<<< HEAD
-	public String toString() {
-
-		return "Textbook ID: " + textBookID + " CopyID: " + copyID + " CheckOut Status: " + checkoutStatus
-				+ " Due Date: " + dueDate + " Patron ID: " + patronID;
-
-	}
-
-=======
 	
 	public String toString(){
 		
@@ -123,5 +108,4 @@ public class Copy {
 		return copyExists;
 	}
 	
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 }
