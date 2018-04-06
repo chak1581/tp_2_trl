@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class TRLApp {
 	static SimpleDateFormat dF = new SimpleDateFormat("MM/dd/yyyy");
-	static Calendar c = Calendar.getInstance();
+	static Calendar c = Calendar.getInstance(); 
 	static Hold hold = new Hold();
 	static Patron patron = new Patron();
 	static Textbook textbook = new Textbook(100, "Software Development", 3);
@@ -15,24 +15,24 @@ public class TRLApp {
 	static boolean copyAvailable = false;
 	static ArrayList<Copy> checkoutList = new ArrayList<Copy>();
 	static int patronID;
-
+	
 	public static void main(String[] args) {
-		loadData();
-		System.out.println("T*******************************************************************T\n"
+	loadData();	
+	System.out.println("T*******************************************************************T\n"
 				+ "\nR****************Welcome to TextBook Rental System******************R\n"
 				+ "\nL*******************************************************************L");
-		System.out.print("Start a checkout session ?[Y or N]: ");
-		Scanner input = new Scanner(System.in);
-		String choice = input.next();
-		if (choice.equalsIgnoreCase("Y")) {
-			startCheckOut();
-		} else {
-			System.out.println("\nT*******************************************************************T\n"
+	 System.out.print("Start a checkout session ?[Y or N]: "); 
+	 Scanner input = new Scanner(System.in); 
+	 String choice = input.next();
+	 if(choice.equalsIgnoreCase("Y")) {
+	 startCheckOut(); 
+	 }else {
+		 System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
-		}
-	}
-
+	 	} 
+	 }
+	 
 	private static void startCheckOut() {
 
 		System.out.println("Please Enter the Patron ID: ");
@@ -41,8 +41,8 @@ public class TRLApp {
 		boolean patronExists = Patron.validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
 			enterCopiesToCheckOut(patronID);
-		} else {
-
+		}else {
+			
 			newCheckOut();
 		}
 	}
@@ -66,65 +66,70 @@ public class TRLApp {
 			}
 
 			else {
-				// change 
-				System.out.println("The Copy is not available! Please Re-Enter Copy ID: ");
+				System.out.println("Incorrect Copy ID. Please Re-Enter Copy ID: ");
 			}
 
 		}
-		if (inputMoreCopies.equalsIgnoreCase("N")) {
+		if(inputMoreCopies.equalsIgnoreCase("N")) {
 			System.out.println("Complete Check Out?[Y or N]:");
 			Scanner input = new Scanner(System.in);
 			String completeCheckOut = input.next();
-			if (completeCheckOut.equalsIgnoreCase("Y")) {
+			if(completeCheckOut.equalsIgnoreCase("Y")){
 				checkoutSummary();
 				newCheckOut();
 			}
-
+			
+			
 		}
 	}
 
 	private static void displayRentalHistory(int copyID) {
 
-		System.out.println("Display Rental History? [Y or N]");
+    System.out.println("Display Rental History? [Y or N]");
+    
+    Scanner input = new Scanner(System.in);
+    String rentalDisplay = input.next();
+    
+    if(rentalDisplay.equalsIgnoreCase("Y")) {
+    	
+    	RentalHistory.copyRentalHistory(copyID);
 
-		Scanner input = new Scanner(System.in);
-		String rentalDisplay = input.next();
-
-		if (rentalDisplay.equalsIgnoreCase("Y")) {
-
-			RentalHistory.copyRentalHistory(copyID);
-
-		} else {
-			return;
-
-		}
-
+    }
+    else 
+    	{
+    	return;
+    	
+    	}
+		
 	}
 
 	private static void loadData() {
 		System.out.println("==========================TRL Data Record============================");
-
+		
 		patron.createPatronData();
-
+		
 		textbook.createTextbooks(100);
-
+		
 	}
-
+	
 	private static void checkoutSummary() {
-		for (int i = 0; i < checkoutList.size(); i++) {
+		for(int i=0; i<checkoutList.size(); i++)
+		{
 			System.out.println(checkoutList.get(i).toString());
 		}
 	}
-
+	
 	private static void newCheckOut() {
-
+		
+		
 		System.out.println("Start a New Session Again? [Y or N]");
-
+		
 		Scanner userInput = new Scanner(System.in);
-		if (userInput.next().equalsIgnoreCase("Y")) {
+		if(userInput.next().equalsIgnoreCase("Y")) {
 			checkoutList.clear();
 			startCheckOut();
-		} else {
+		}
+		else {
 			System.out.println("==========Session end==========");
 			return;
 		}
