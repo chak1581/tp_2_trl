@@ -66,7 +66,7 @@ public class TRLApp {
 			}
 
 			else {
-				System.out.println("Incorrect Copy ID. Please Re-Enter Copy ID: ");
+				System.out.println("The Copy is not available! Please Re-Enter Copy ID: ");
 			}
 
 		}

@@ -64,32 +64,56 @@ public class Patron {
 		Patron patronOne = new Patron(123, "Kathy", "student");
 		Patron patronTwo = new Patron(456, "Amy", "student");
 		Patron patronThree = new Patron(789, "Ryan", "student");
-		Patron patronFour = new Patron(1001, "Dave", "student");
+		Patron patronFour = new Patron(101, "Dave", "student");
+		Patron patronFive = new Patron(201, "Paul", "student");
+		Patron patronSix = new Patron(301, "Vicky", "student");
+		Patron patronSeven = new Patron(401, "Andy", "student");
+		Patron patronEight = new Patron(501, "Wendy", "student");
 
 		patronList.add(patronOne);
 		patronList.add(patronTwo);
 		patronList.add(patronThree);
 		patronList.add(patronFour);
+		patronList.add(patronFive);
+		patronList.add(patronSix);
+		patronList.add(patronSeven);
+		patronList.add(patronEight);
 
 		Hold hold1 = new Hold(123, "N");
 		Hold hold2 = new Hold(456, "N");
 		Hold hold3 = new Hold(789, "Y");
-		Hold hold4 = new Hold(1001, "Y");
+		Hold hold4 = new Hold(101, "Y");
+		Hold hold5 = new Hold(201, "Y");
+		Hold hold6 = new Hold(301, "N");
+		Hold hold7 = new Hold(401, "Y");
+		Hold hold8 = new Hold(501, "N");
 
 		System.out.println(hold1.toString());
 		System.out.println(hold2.toString());
 		System.out.println(hold3.toString());
 		System.out.println(hold4.toString());
+		System.out.println(hold5.toString());
+		System.out.println(hold6.toString());
+		System.out.println(hold7.toString());
+		System.out.println(hold8.toString());
 
 		HoldList.add(hold1);
 		HoldList.add(hold2);
 		HoldList.add(hold3);
 		HoldList.add(hold4);
+		HoldList.add(hold5);
+		HoldList.add(hold6);
+		HoldList.add(hold7);
+		HoldList.add(hold8);
 
 		System.out.println(patronOne.toString());
 		System.out.println(patronTwo.toString());
 		System.out.println(patronThree.toString());
 		System.out.println(patronFour.toString());
+		System.out.println(patronFive.toString());
+		System.out.println(patronSix.toString());
+		System.out.println(patronSeven.toString());
+		System.out.println(patronEight.toString());
 	}
 
 	public String toString() {
@@ -98,19 +122,19 @@ public class Patron {
 
 	}
 
-
 	public Patron getCurrentPatron() {
 		Patron current_patron = patronList.get(getPatronID());
 		return current_patron;
 	}
+
 	static boolean validatePatronID(int patronID) {
-	
+
 		boolean patronExists = false;
-	
+
 		for (int i = 0; i < TRLApp.patron.getPatronList().size(); i++) {
-	
+
 			if (TRLApp.patron.getPatronList().get(i).getPatronID() == patronID) {
-	
+
 				patronExists = true;
 				System.out.println("Patron Exists");
 				System.out.println(TRLApp.patron.getPatronList().get(i).toString());
@@ -122,7 +146,7 @@ public class Patron {
 		if (patronExists == false) {
 			System.out.println("The entered Patron ID does not exist in the system.");
 		}
-	
+
 		return patronExists;
 
 	}
