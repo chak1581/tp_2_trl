@@ -98,11 +98,11 @@ public class Patron {
 
 	}
 
-<<<<<<< HEAD
+
 	public Patron getCurrentPatron() {
 		Patron current_patron = patronList.get(getPatronID());
 		return current_patron;
-=======
+	}
 	static boolean validatePatronID(int patronID) {
 	
 		boolean patronExists = false;
@@ -124,7 +124,7 @@ public class Patron {
 		}
 	
 		return patronExists;
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
+
 	}
 
 }

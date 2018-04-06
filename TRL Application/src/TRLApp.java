@@ -2,6 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,12 +16,8 @@ public class TRLApp {
 	static String holdStatus = null;
 	static boolean copyAvailable = false;
 	static ArrayList<Copy> checkoutList = new ArrayList<Copy>();
-<<<<<<< HEAD
-
-=======
 	static int patronID;
 	
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 	public static void main(String[] args) {
 		loadData();
 		System.out.println("T*******************************************************************T\n"
@@ -35,19 +32,11 @@ public class TRLApp {
 			System.out.println("\nT*******************************************************************T\n"
 					+ "\nR************Thank you for using Textbook Rental System*************R\n"
 					+ "\nL*******************************************************************L");
-<<<<<<< HEAD
-		}
-		// updateStatus();
-		// checkoutSummary();
-	}
-
-=======
 	 	} 
 	 //updateStatus();
 	// checkoutSummary();
 	 }
 	 
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 	private static void startCheckOut() {
 
 		System.out.println("Please Enter the Patron ID: ");
@@ -55,16 +44,9 @@ public class TRLApp {
 		patronID = input.nextInt();
 		boolean patronExists = Patron.validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
-<<<<<<< HEAD
-			enterCopiesToCheckOut();
-		} else {
-			enterCopiesToCheckOut();
-=======
 			enterCopiesToCheckOut(patronID);
-		}else {
-			
+		}else {	
 			newCheckOut();
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 		}
 	}
 
@@ -80,7 +62,6 @@ public class TRLApp {
 				displayRentalHistory(copyID);
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
-<<<<<<< HEAD
 				} else {
 					c.setTime(new Date());
 					c.add(Calendar.DATE, 90);
@@ -88,13 +69,7 @@ public class TRLApp {
 					Copy aCopy = new Copy(copyID, textbook.getTextbookID(), "checked out", dueDate,
 							patron.getCurrentPatron().getPatronID());
 					checkoutList.add(aCopy);
-=======
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 				}
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 				System.out.println("More Copies to check Out[Y or N]: ");
 				Scanner userInput = new Scanner(System.in);
 				inputMoreCopies = userInput.next();
@@ -105,7 +80,6 @@ public class TRLApp {
 			}
 
 		}
-<<<<<<< HEAD
 		if (inputMoreCopies.equalsIgnoreCase("N")) {
 			// System.out.println(checkoutList.);
 			System.out.println("Complete Check Out?[Y or N]:");
@@ -117,7 +91,6 @@ public class TRLApp {
 			}
 
 			System.out.println("==========Session end==========");
-=======
 		if(inputMoreCopies.equalsIgnoreCase("N")) {
 			System.out.println("Complete Check Out?[Y or N]:");
 			Scanner input = new Scanner(System.in);
@@ -127,11 +100,7 @@ public class TRLApp {
 				checkoutSummary();
 				newCheckOut();
 			}
-			
-			
->>>>>>> branch 'master' of https://github.com/chak1581/tp_2_trl.git
 		}
-	}
 
 	private static void displayRentalHistory(int copyID) {
 
