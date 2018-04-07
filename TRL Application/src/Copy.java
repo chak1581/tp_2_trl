@@ -95,6 +95,7 @@ public class Copy {
 				}
 				else{
 					TRLApp.copyAvailable = false;
+					break;
 				}
 				
 			}
