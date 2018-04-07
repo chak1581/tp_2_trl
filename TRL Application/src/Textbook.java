@@ -101,7 +101,7 @@ public class Textbook {
 		// System.out.println(history.toString());
 		
 		Scanner input = new Scanner(System.in);
-		System.out.println("Display Textbook information? [Y or N]");
+		System.out.print("\r\nDisplay Textbook information? [Y or N]: ");
 		String display = input.next();
 		if(display.equalsIgnoreCase("Y")) {
 			System.out.println(toString());
