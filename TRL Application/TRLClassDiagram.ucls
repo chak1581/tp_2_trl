@@ -76,7 +76,7 @@
   <association id="13">    
     <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="14" name="hold">        
-        <position height="19" width="34" x="675" y="310"/>      
+        <position height="19" width="34" x="681" y="311"/>      
       </attribute>      
       <multiplicity id="15" minimum="0" maximum="1"/>    
     </end>    
