@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -98,10 +99,10 @@ public class Patron {
 		HoldList.add(hold8);
 
 		Scanner input = new Scanner(System.in);
-		System.out.println("Display Patron information? [Y or N]");
+		System.out.print("Display Patron information? [Y or N]: ");
 		String display = input.next();
-		if(display.equalsIgnoreCase("Y")){
-			System.out.println(patronOne.toString() +  " | Hold Status: " + hold1.getHoldStatus());
+		if (display.equalsIgnoreCase("Y")) {
+			System.out.println(patronOne.toString() + " | Hold Status: " + hold1.getHoldStatus());
 			System.out.println(patronTwo.toString() + " | Hold Status: " + hold2.getHoldStatus());
 			System.out.println(patronThree.toString() + " | Hold Status: " + hold3.getHoldStatus());
 			System.out.println(patronFour.toString() + " | Hold Status: " + hold4.getHoldStatus());
@@ -110,7 +111,7 @@ public class Patron {
 			System.out.println(patronSeven.toString() + " | Hold Status: " + hold7.getHoldStatus());
 			System.out.println(patronEight.toString() + " | Hold Status: " + hold8.getHoldStatus());
 		}
-		
+
 	}
 
 	public String toString() {
@@ -136,7 +137,7 @@ public class Patron {
 			}
 		}
 		if (patronExists == false) {
-			//System.out.println("The entered Patron ID does not exist in the system.");
+			// System.out.println("The entered Patron ID does not exist in the system.");
 		}
 
 		return patronExists;

@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+
 // add method
 public class TRLApp {
 	static SimpleDateFormat dF = new SimpleDateFormat("MM/dd/yyyy");
@@ -19,10 +20,11 @@ public class TRLApp {
 
 	public static void main(String[] args) {
 		loadData();
-		System.out.println("T*******************************************************************T\n"
-				+ "\nR****************Welcome to TextBook Rental System******************R\n"
-				+ "\nL*******************************************************************L");
-		System.out.print("Start a checkout session ?[Y or N]: ");
+		System.out.println(
+				"\r\nT***************************************************************************************T\n"
+						+ "\nR**************************Welcome to TextBook Rental System****************************R\n"
+						+ "\nL***************************************************************************************L");
+		System.out.print("Start a checkout session? [Y or N]: ");
 		Scanner input = new Scanner(System.in);
 		String choice = input.next();
 		if (choice.equalsIgnoreCase("Y")) {
@@ -30,17 +32,21 @@ public class TRLApp {
 			patronDisplayRules(input, patronRules);
 			startCheckOut();
 		} else {
-			System.out.println("\nT*******************************************************************T\n"
-					+ "\nR************Thank you for using Textbook Rental System*************R\n"
-					+ "\nL*******************************************************************L");
+			System.out.println(
+					"\nT***************************************************************************************T\n"
+							+ "\nR**********************Thank you for using Textbook Rental System***********************R\n"
+							+ "\nL***************************************************************************************L\n"
+							+ "\n*****************************************Creators: Brett && Ipshita && Veronica && Shanqi");
 		}
-		System.out.println("\nT*******************************************************************T\n"
-				+ "\nR************Thank you for using Textbook Rental System*************R\n"
-				+ "\nL*******************************************************************L");
+		System.out
+				.println("\nT***************************************************************************************T\n"
+						+ "\nR**********************Thank you for using Textbook Rental System***********************R\n"
+						+ "\nL***************************************************************************************L\n"
+						+ "\n*****************************************Creators: Brett && Ipshita && Veronica && Shanqi");
 	}
 
 	private static void patronDisplayRules(Scanner input, PatronRules patronRules) {
-		System.out.print("\n[Do you want to see the patron check out instruction? Y/N]:");
+		System.out.print("\nDo you want to see the patron check out instruction? [Y or N]:");
 		if ("Y".equalsIgnoreCase(input.next())) {
 			patronRules.displayRules();
 			startCheckOut();
@@ -51,7 +57,7 @@ public class TRLApp {
 
 	private static void startCheckOut() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Please Enter the Patron ID: ");
+		System.out.print("Please Enter the Patron ID: ");
 		int patronID = input.nextInt();
 		boolean patronExists = Patron.validatePatronID(patronID);
 		if (patronExists == true && holdStatus == "N") {
@@ -70,7 +76,7 @@ public class TRLApp {
 		String inputMoreCopies = "Y";
 		while (inputMoreCopies.equalsIgnoreCase("Y")) {
 			Scanner input = new Scanner(System.in);
-			System.out.println("Please Enter CopyID: ");
+			System.out.print("\nPlease Enter CopyID: ");
 			int copyID = input.nextInt();
 
 			boolean copyExists = Copy.validateAndCheckOutCopy(copyID, patronID);
@@ -79,11 +85,10 @@ public class TRLApp {
 
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
-				}
-				else {
+				} else {
 					displayRentalHistory(copyID);
 				}
-				System.out.println("More Copies to check Out[Y or N]: ");
+				System.out.print("\nMore Copies to check Out[Y or N]: ");
 				Scanner userInput = new Scanner(System.in);
 				inputMoreCopies = userInput.next();
 			}
@@ -94,7 +99,7 @@ public class TRLApp {
 
 		}
 		if (inputMoreCopies.equalsIgnoreCase("N")) {
-			System.out.println("Complete Check Out?[Y or N]:");
+			System.out.print("\nComplete Check Out?[Y or N]: ");
 			Scanner input = new Scanner(System.in);
 			String completeCheckOut = input.next();
 			if (completeCheckOut.equalsIgnoreCase("Y")) {
@@ -106,7 +111,7 @@ public class TRLApp {
 
 	private static void displayRentalHistory(int copyID) {
 
-		System.out.println("Display Rental History? [Y or N]");
+		System.out.print("\nDisplay Rental History? [Y or N]: ");
 
 		Scanner input = new Scanner(System.in);
 		String rentalDisplay = input.next();
@@ -140,14 +145,14 @@ public class TRLApp {
 
 	private static void newCheckOut() {
 
-		System.out.println("Start a New Session Again? [Y or N]");
+		System.out.print("\r\nStart a New Session Again? [Y or N]: ");
 
 		Scanner userInput = new Scanner(System.in);
 		if (userInput.next().equalsIgnoreCase("Y")) {
 			checkoutList.clear();
 			startCheckOut();
 		} else {
-			System.out.println("==========Session end==========");
+			System.out.println("==============Session end==============");
 			return;
 		}
 	}
