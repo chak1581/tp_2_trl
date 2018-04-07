@@ -1,4 +1,4 @@
-
+// add rule
 public class PatronRules {
 
 	public PatronRules() {

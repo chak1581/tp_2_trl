@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
+// add method
 public class TRLApp {
 	static SimpleDateFormat dF = new SimpleDateFormat("MM/dd/yyyy");
 	static Calendar c = Calendar.getInstance();
