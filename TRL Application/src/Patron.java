@@ -128,7 +128,7 @@ public class Patron {
 			if (TRLApp.patron.getPatronList().get(i).getPatronID() == patronID) {
 
 				patronExists = true;
-				System.out.println("Patron Exists");
+				System.out.println("Patron Exists in the System !");
 				System.out.println(TRLApp.patron.getPatronList().get(i).toString());
 				TRLApp.holdStatus = TRLApp.patron.getHoldList().get(i).getHoldStatus();
 				System.out.println("Hold Status: " + TRLApp.holdStatus);

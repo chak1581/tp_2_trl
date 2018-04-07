@@ -64,10 +64,13 @@ public class TRLApp {
 			
 			boolean copyExists = Copy.validateAndCheckOutCopy(copyID, patronID);
 			if (copyExists == true) {
-				System.out.println("Copy Exists");
-				displayRentalHistory(copyID);
+				System.out.println("Copy Validated in the System !");
+				
 				if (copyAvailable == false) {
 					System.out.println("The Copy is Already Checked Out!!!");
+				}
+				else {
+					displayRentalHistory(copyID);
 				}
 				System.out.println("More Copies to check Out[Y or N]: ");
 				Scanner userInput = new Scanner(System.in);
