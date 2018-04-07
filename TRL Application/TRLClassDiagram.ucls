@@ -120,7 +120,7 @@
   <association id="28">    
     <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="29" name="patron">        
-        <position height="19" width="46" x="381" y="176"/>      
+        <position height="19" width="46" x="387" y="172"/>      
       </attribute>      
       <multiplicity id="30" minimum="0" maximum="1"/>    
     </end>    
